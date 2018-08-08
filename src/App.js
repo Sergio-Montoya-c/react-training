@@ -1,31 +1,21 @@
 import React, {Component} from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import MainLayout from './layouts/MainLayout';
 
 // Components
 import List from './components/List';
+import Main from './components/Main';
 
 class App extends Component {
-
-  state = {
-    posts: [],
-  }
-
-  componentWillMount = () => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
-      .then(posts => {
-        this.setState({
-          posts: posts,
-        })
-      });
-  }
-
   render() {
-    const {posts} = this.state;
     return (
-      <div className="App">
-        <List posts={posts} />
-      </div>
+      <Router>
+        <MainLayout>
+          <Route exact path="/" component={Main} />
+          <Route exact path="/list" component={List} />
+        </MainLayout>
+      </Router>
     );
   }
 }
