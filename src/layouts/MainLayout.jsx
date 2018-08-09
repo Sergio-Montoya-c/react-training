@@ -8,10 +8,14 @@ export default class MainLayout extends Component {
       <Fragment>
         <header>
           <h1>MicheReact Training</h1>
-          <Link to="/">Return to Root</Link>
-          <Link to="/list">View Posts</Link>
+          <div>
+            <Link to="/">Return to Root</Link>
+            <Link to="/list">View Posts</Link>
+          </div>
         </header>
+        <div className="main-content">
           {children}
+        </div>
         <footer>
           MICHETRAINING
         </footer>

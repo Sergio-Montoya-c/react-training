@@ -1,0 +1,13 @@
+header {
+  background: $dark-blue;
+  color: #FFF;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  align-items: center;
+  flex-shrink: 0;
+  a {
+    margin: 0 0 0 15px;
+    color: #FFF;
+  }
+}
