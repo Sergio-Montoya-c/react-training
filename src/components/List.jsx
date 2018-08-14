@@ -1,6 +1,7 @@
 import React, {Fragment, Component} from "react";
 import { Link } from "react-router-dom";
 import Item from './Item';
+import Form from './Form';
 import axios from 'axios';
 
 class List extends Component {
@@ -16,11 +17,8 @@ class List extends Component {
     });
   }
 
-  handlePostItem = async () => {
-    const newPost = await axios.post('https://jsonplaceholder.typicode.com/posts', {
-        title: 'Miche Training',
-        body: 'Cool traning to learn react',
-      })
+  handlePostItem = async item => {
+    const newPost = await axios.post('https://jsonplaceholder.typicode.com/posts', item)
       .then(response => response.data);
       this.setState({
         posts: [newPost, ...this.state.posts],
@@ -31,17 +29,14 @@ class List extends Component {
     const {posts} = this.state;
     return(
       <Fragment>
-        <Link to="/">Return to index</Link>
         <h1>POSTS</h1>
+        <Form onPostItem={this.handlePostItem} />
         <button onClick={ this.handleRetrievePosts }>
           PRESS TO LOAD DATA
         </button>
-        <button onClick={ this.handlePostItem }>
-          PRESS TO ADD ONE ITEM
-        </button>
         <ul>
           {posts.map(post => {
-            return <Item key={post.id} title={post.title} body={post.body} />
+            return <Item key={post.title} title={post.title} body={post.body} />
           })}
         </ul>
       </Fragment>
