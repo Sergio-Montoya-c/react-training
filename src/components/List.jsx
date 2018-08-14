@@ -1,7 +1,7 @@
 import React, {Fragment, Component} from "react";
-import { Link } from "react-router-dom";
 import Item from './Item';
 import Form from './Form';
+import OtherForm from './OtherForm';
 import axios from 'axios';
 
 class List extends Component {
@@ -29,16 +29,19 @@ class List extends Component {
     const {posts} = this.state;
     return(
       <Fragment>
-        <h1>POSTS</h1>
-        <Form onPostItem={this.handlePostItem} />
-        <button onClick={ this.handleRetrievePosts }>
-          PRESS TO LOAD DATA
-        </button>
-        <ul>
-          {posts.map(post => {
-            return <Item key={post.title} title={post.title} body={post.body} />
-          })}
-        </ul>
+        <div className="list">
+          <h1>POSTS</h1>
+          <Form onPostItem={this.handlePostItem} />
+          <button onClick={ this.handleRetrievePosts }>
+            PRESS TO LOAD DATA
+          </button>
+          <OtherForm onPostItem={this.handlePostItem} />
+          <ul>
+            {posts.map(post => {
+              return <Item key={post.title} title={post.title} body={post.body} />
+            })}
+          </ul>
+        </div>
       </Fragment>
     )
   }

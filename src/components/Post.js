@@ -14,7 +14,6 @@ export default class Post extends Component {
   }
 
   render (){
-    console.log(this.props);
     const {title, body} =  this.state;
     return (
       <div>

@@ -3,7 +3,7 @@ import React from 'react';
 const Item = ({body, title}) => {
   return (
     <li>
-      <h1>{title}</h1>
+      <strong>{title}</strong>
       <span>{body}</span>
     </li>
   );
