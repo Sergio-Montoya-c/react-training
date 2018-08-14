@@ -1,42 +1,43 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+import withSubscription from "./FormHOC";
 
-export default class Form extends Component {
-  state = {
-    title: '',
-    body: '',
-  }
+const myFields = {
+  title: "",
+  body: ""
+};
 
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    })
-  }
-
-  handleClick = () => {
-    this.props.onPostItem(this.state);
-  }
-
-  render() {
-    const {title, body} = this.state;
-    return(
+const Form = ({ fields, onPostItem, handleInputChange }) => {
+  const { title, body } = fields;
+  return (
+    <div>
       <div>
-        <div>
-          <label>Title</label>
-          <input onChange={this.handleChange} name="title" type="text" value={title} />
-        </div>
-        <div>
-          <label>Body</label>
-          <input onChange={this.handleChange} name="body" type="text" value={body} />
-        </div>
-        <button onClick={this.handleClick}>
-          SEND
-        </button>
+        <label>Title</label>
+        <input
+          onChange={handleInputChange}
+          name="title"
+          type="text"
+          value={title}
+        />
       </div>
-    )
-  }
-}
+      <div>
+        <label>Body</label>
+        <input
+          onChange={handleInputChange}
+          name="body"
+          type="text"
+          value={body}
+        />
+      </div>
+      <button onClick={() => onPostItem(fields)}>SEND</button>
+    </div>
+  );
+};
+
+const FormWithSubscription = withSubscription(Form, myFields);
+
+export default FormWithSubscription;
 
 Form.propTypes = {
-  onPostItem: PropTypes.func.isRequired,
+  onPostItem: PropTypes.func.isRequired
 };
