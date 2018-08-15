@@ -9,6 +9,10 @@ class List extends Component {
     posts: []
   }
 
+  componentDidMount = () => {
+    this.handleRetrievePosts();
+  }
+
   handleRetrievePosts = async () => {
     const posts = await axios.get('https://jsonplaceholder.typicode.com/posts')
       .then(response => response.data);
@@ -35,7 +39,6 @@ class List extends Component {
           <button onClick={ this.handleRetrievePosts }>
             PRESS TO LOAD DATA
           </button>
-          <OtherForm onPostItem={this.handlePostItem} />
           <ul>
             {posts.map(post => {
               return <Item key={post.title} title={post.title} body={post.body} />
