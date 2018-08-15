@@ -1,34 +1,32 @@
-import React, {Component} from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import MainLayout from './layouts/MainLayout';
+import MainLayout from "./layouts/MainLayout";
 
-import AppContext from './AppContext';
+import AppContext from "./AppContext";
 
 // Components
-import List from './components/List';
-import Main from './components/Main';
-import Post from './components/Post';
+import List from "./components/List";
+import Main from "./components/Main";
+import Post from "./components/Post";
 
 class App extends Component {
-  
-  changeUserName = (newUserName) => {
+  changeUserName = newUserName => {
     this.setState({
       user: {
         name: newUserName,
-        lastName: 'Barraza',
+        lastName: "Barraza"
       }
-    })
-  }
-  
+    });
+  };
+
   state = {
     user: {
-      name: 'Sergio',
-      lastName: 'Montoya',
+      name: "Sergio",
+      lastName: "Montoya"
     },
-    account: '',
-    handleChangeUser: this.changeUserName,
-  }
+    handleChangeUser: this.changeUserName
+  };
 
   render() {
     return (

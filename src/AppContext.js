@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const AppContext = React.createContext({
   user: {},
-  account: 'asdas',
-  handleChangeUser: () => {},
+  account: "",
+  handleChangeUser: () => {}
 });
 
 export default AppContext;

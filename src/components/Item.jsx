@@ -1,32 +1,19 @@
-import React, {Component} from 'react';
-import AppContext from '../AppContext';
+import React, { Component } from "react";
+import UserConsumer from "../consumers/UserConsumer";
 
 class Item extends Component {
-
-  componentDidMount = () => {
-    console.log(this.props);
-  }
-
-  render () {
-    const {title, body, user, handleChangeUser} = this.props;
+  render() {
+    const { title, body } = this.props;
+    const { user, handleChangeUser } = this.props.context;
     return (
       <li>
-        <h1>{user.name}</h1>
+        <h2>{user.name}</h2>
         <strong>{title}</strong>
         <span>{body}</span>
         <button onClick={() => handleChangeUser(title)}>CHANGE USER</button>
       </li>
-    )
+    );
   }
-};
+}
 
-const ItemConsumer = (props) => 
-  <AppContext.Consumer>
-    { 
-      state => {
-        return <Item {...state} {...props}/> 
-      }
-    }
-  </AppContext.Consumer>
-
-export default ItemConsumer;
+export default UserConsumer(Item);

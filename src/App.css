@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://fonts.googleapis.com/css?family=Oxygen");
 header {
   background: #071826;
-  color: #FFF;
+  color: #fff;
   display: flex;
   justify-content: space-between;
   padding: 1em;
@@ -9,7 +9,15 @@ header {
   flex-shrink: 0; }
   header a {
     margin: 0 0 0 15px;
-    color: #FFF; }
+    color: #fff; }
+  @media (max-width: 769px) {
+    header {
+      flex-direction: column;
+      align-items: center; }
+      header > * {
+        margin: 15px 0; }
+        header > * a {
+          margin: 0 10px; } }
 
 footer {
   background: #164059;
@@ -17,14 +25,16 @@ footer {
   color: #FFF;
   font-size: 12px; }
 
-html, body, #root {
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
-  font-family: "Raleway", sans-serif;
+  font-family: "Oxygen", sans-serif;
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: #F2F2F0; }
+  background: #f2f2f0; }
 
 h1 {
   margin: 0;
@@ -33,19 +43,51 @@ h1 {
 .main-content {
   flex: 2; }
 
+.main-content {
+  max-width: 960px;
+  margin: 0 auto; }
+
 .list {
   padding: 15px;
   box-sizing: border-box; }
+  .list form {
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #fff;
+    border-radius: 5px; }
   .list h1 {
+    margin-bottom: 15px;
+    text-align: center; }
+  .list label {
+    font-weight: bold;
+    display: flex;
     margin-bottom: 15px; }
-  .list input {
-    border-radius: 3px;
-    margin-left: 15px;
-    border: 1px solid #cdcdcd;
-    line-height: 2em;
-    margin-bottom: 15px; }
+  .list input,
+  .list button {
+    border-radius: 5px;
+    border: 1px solid rgba(205, 205, 205, 0.5);
+    line-height: 3em;
+    margin-bottom: 15px;
+    min-width: 200px;
+    font-size: 14px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    font-family: "Oxygen", sans-serif; }
+  .list ul {
+    list-style: none;
+    padding: 0; }
+    .list ul strong {
+      font-weight: bold; }
+    .list ul li {
+      border-bottom: 1px solid #cdcdcd;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; }
+      .list ul li button {
+        margin-top: 15px; }
   @media (max-width: 769px) {
-    .list input {
+    .list input,
+    .list button {
       width: 100%;
       margin-left: 0;
       margin-top: 15px; } }
