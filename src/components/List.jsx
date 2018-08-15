@@ -9,6 +9,10 @@ class List extends Component {
     posts: []
   }
 
+  componentDidMount = () => {
+    this.handleRetrievePosts();
+  }
+
   handleRetrievePosts = async () => {
     const posts = await axios.get('https://jsonplaceholder.typicode.com/posts')
       .then(response => response.data);

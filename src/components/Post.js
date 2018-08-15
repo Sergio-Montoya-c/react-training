@@ -8,8 +8,7 @@ export default class Post extends Component {
   }
 
   componentDidMount = async () => {
-    const post = await axios.get(`https://jsonplaceholder.typicode.com/posts/${this.props.match.params.id}`)
-      .then(response => response.data);
+    const {data: post} = await axios.get(`https://jsonplaceholder.typicode.com/posts/${this.props.match.params.id}`);
     this.setState(post);
   }
 
